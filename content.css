@@ -1,0 +1,250 @@
+#wiki-progress-sidebar {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  width: 240px;
+  background: #f8f9fa;
+  border: 1px solid #a2a9b1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Liberation Sans', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  z-index: 100;
+  transition: transform 0.2s ease;
+}
+
+#wiki-progress-sidebar.wiki-sidebar-collapsed {
+  transform: translateX(calc(100% + 20px));
+}
+
+.wiki-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #eaecf0;
+  border-bottom: 1px solid #a2a9b1;
+}
+
+.wiki-sidebar-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #202122;
+}
+
+.wiki-sidebar-toggle {
+  background: none;
+  border: none;
+  color: #0645ad;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  text-decoration: none;
+}
+
+.wiki-sidebar-toggle:hover {
+  text-decoration: underline;
+}
+
+.wiki-sidebar-visit {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  color: #54595d;
+  background: #fff;
+  border-bottom: 1px solid #eaecf0;
+  text-align: center;
+}
+
+.wiki-sidebar-progress {
+  height: 4px;
+  background: #eaecf0;
+  position: relative;
+  overflow: hidden;
+}
+
+.wiki-sidebar-progress-bar {
+  height: 100%;
+  background: #36c;
+  transition: width 0.3s ease;
+}
+
+.wiki-sidebar-text {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  color: #54595d;
+  background: #fff;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.wiki-sidebar-section {
+  background: #fff;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.wiki-sidebar-section-title {
+  padding: 8px 12px 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #202122;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.wiki-sidebar-context-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 8px 0;
+}
+
+.wiki-sidebar-context-list li {
+  margin: 0;
+  padding: 3px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.wiki-sidebar-context-link {
+  color: #0645ad;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wiki-sidebar-context-link:hover {
+  text-decoration: underline;
+}
+
+.wiki-sidebar-context-link:visited {
+  color: #0b0080;
+}
+
+.wiki-sidebar-time {
+  font-size: 0.6875rem;
+  color: #72777d;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.wiki-sidebar-ref-count {
+  font-size: 0.6875rem;
+  color: #72777d;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+.wiki-sidebar-nav {
+  background: #fff;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.wiki-sidebar-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.wiki-sidebar-nav li {
+  margin: 0;
+  padding: 0;
+}
+
+.wiki-sidebar-link {
+  display: block;
+  padding: 4px 12px;
+  color: #0645ad;
+  text-decoration: none;
+  transition: background 0.1s ease;
+}
+
+.wiki-sidebar-link:hover {
+  background: #eaecf0;
+  text-decoration: underline;
+}
+
+.wiki-sidebar-link:visited {
+  color: #0b0080;
+}
+
+.wiki-sidebar-empty {
+  padding: 12px;
+  text-align: center;
+  color: #54595d;
+  font-size: 0.8125rem;
+}
+
+.wiki-sidebar-footer {
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-top: 1px solid #a2a9b1;
+}
+
+.wiki-sidebar-clear {
+  width: 100%;
+  padding: 6px 12px;
+  background: white;
+  border: 1px solid #a2a9b1;
+  border-radius: 2px;
+  color: #d73333;
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.wiki-sidebar-clear:hover {
+  background: #fee;
+  border-color: #d73333;
+}
+
+.wiki-sidebar-nav::-webkit-scrollbar {
+  width: 8px;
+}
+
+.wiki-sidebar-nav::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+.wiki-sidebar-nav::-webkit-scrollbar-thumb {
+  background: #c8ccd1;
+  border-radius: 4px;
+}
+
+.wiki-sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: #a2a9b1;
+}
+
+@media (max-width: 1200px) {
+  #wiki-progress-sidebar {
+    right: 10px;
+    width: 200px;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #wiki-progress-sidebar {
+    display: none;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#wiki-progress-sidebar.wiki-sidebar-visible {
+  animation: slideIn 0.3s ease;
+}
