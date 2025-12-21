@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Wikipedia Progress Tracker",
+  "version": "3.0.0",
+  "description": "Track your personal Wikipedia universe",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["*://*.wikipedia.org/*"],
+  "background": {"service_worker": "background.js"},
+  "content_scripts": [{
+    "matches": ["*://*.wikipedia.org/wiki/*"],
+    "js": ["content.js"],
+    "css": ["content.css"],
+    "run_at": "document_idle"
+  }],
+  "action": {
+    "default_icon": {"16": "icon16.png", "48": "icon48.png", "128": "icon128.png"}
+  },
+  "icons": {"16": "icon16.png", "48": "icon48.png", "128": "icon128.png"}
+}
