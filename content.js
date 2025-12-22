@@ -178,7 +178,7 @@
 
           const unreadLinks = allLinksOnPage
             .filter(link => !articles[link.url])
-            .slice(0, 10);
+            .slice(0, 3);
 
           const incomingLinks = [];
           Object.entries(allLinks).forEach(([articleUrl, links]) => {
@@ -285,7 +285,7 @@
       <div class="wiki-sidebar-text">${stats.readLinks} of ${stats.totalLinks} links read (${stats.percentage}%)</div>
       ${contextTrailHTML}
       <div class="wiki-sidebar-section">
-        <div class="wiki-sidebar-section-title">Unread from here:</div>
+        <div class="wiki-sidebar-section-title">Explore next:</div>
         <nav class="wiki-sidebar-nav">
           <ul>
             ${unreadLinksHTML}
