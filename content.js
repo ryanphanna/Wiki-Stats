@@ -89,6 +89,19 @@
 
   displaySidebar(articleUrl, links);
 
+  // Add resize listener to recalculate dynamic limits
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const existingSidebar = document.getElementById('wiki-progress-sidebar');
+      if (existingSidebar) {
+        existingSidebar.remove();
+        displaySidebar(articleUrl, links);
+      }
+    }, 250); // Debounce resize events
+  });
+
   function isArticlePage() {
     const path = window.location.pathname;
     return path.includes('/wiki/') &&
@@ -166,6 +179,37 @@
     }
   }
 
+  function calculateDynamicLimits() {
+    const viewportHeight = window.innerHeight;
+
+    // Estimate fixed heights (in pixels):
+    // - Header (title + toggle button): ~60px
+    // - Visit info (if present): ~30px
+    // - Progress bar: ~35px
+    // - Progress text: ~25px
+    // - Section titles (2 sections): ~25px each = ~50px
+    // - "Referenced in:" section (variable, estimate 5 items): ~150px
+    // - Footer (clear button): ~50px
+    // - Padding/margins: ~40px
+    const estimatedFixedHeight = 60 + 30 + 35 + 25 + 50 + 150 + 50 + 40;
+
+    const availableHeight = Math.max(0, viewportHeight - estimatedFixedHeight);
+
+    // Each link is approximately 28px tall
+    const linkHeight = 28;
+    const totalSlots = Math.floor(availableHeight / linkHeight);
+
+    // Split equally between "Explore next" and "Suggested" sections
+    let slotsPerSection = Math.floor(totalSlots / 2);
+
+    // Apply min/max constraints
+    const MIN_ITEMS = 3;
+    const MAX_ITEMS = 10;
+    slotsPerSection = Math.max(MIN_ITEMS, Math.min(MAX_ITEMS, slotsPerSection));
+
+    return slotsPerSection;
+  }
+
   function displaySidebar(url, allLinksOnPage) {
     chrome.runtime.sendMessage({
       action: 'getStats',
@@ -176,9 +220,11 @@
           const articles = result.articles || {};
           const allLinks = result.links || {};
 
+          const itemsPerSection = calculateDynamicLimits();
+
           const unreadLinks = allLinksOnPage
             .filter(link => !articles[link.url])
-            .slice(0, 3);
+            .slice(0, itemsPerSection);
 
           const incomingLinks = [];
           Object.entries(allLinks).forEach(([articleUrl, links]) => {
@@ -206,7 +252,7 @@
 
           const suggestedFromNetwork = Object.entries(linkCounts)
             .sort((a, b) => b[1] - a[1])
-            .slice(0, 3)
+            .slice(0, itemsPerSection)
             .map(([linkUrl, count]) => ({
               url: linkUrl,
               title: getTitleFromUrl(linkUrl),
@@ -216,16 +262,17 @@
           const articleData = articles[url];
           const visitCount = articleData ? (articleData.visitCount || 1) : 1;
 
-          createSidebar(stats, visitCount, unreadLinks, incomingLinks, suggestedFromNetwork);
+          createSidebar(stats, visitCount, unreadLinks, incomingLinks, suggestedFromNetwork, itemsPerSection);
         });
       }
     });
   }
 
-  function createSidebar(stats, visitCount, unreadLinks, incomingLinks, suggestedFromNetwork) {
+  function createSidebar(stats, visitCount, unreadLinks, incomingLinks, suggestedFromNetwork, itemsPerSection) {
     const sidebar = document.createElement('div');
     sidebar.id = 'wiki-progress-sidebar';
     sidebar.className = 'wiki-sidebar-visible';
+    sidebar.dataset.itemsPerSection = itemsPerSection;
 
     const visitInfo = visitCount > 1 ? `<div class="wiki-sidebar-visit">Visit #${visitCount}</div>` : '';
 
