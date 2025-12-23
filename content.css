@@ -3,8 +3,6 @@
   top: 120px;
   right: 20px;
   width: 240px;
-  max-height: calc(100vh - 140px);
-  overflow-y: auto;
   background: #f8f9fa;
   border: 1px solid #a2a9b1;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Liberation Sans', sans-serif;
@@ -46,6 +44,19 @@
 
 .wiki-sidebar-toggle:hover {
   text-decoration: underline;
+}
+
+.wiki-sidebar-stats {
+  padding: 8px 12px;
+  background: #fff;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.wiki-stat-item {
+  font-size: 0.75rem;
+  color: #202122;
+  text-align: center;
+  font-weight: 500;
 }
 
 .wiki-sidebar-visit {
@@ -142,8 +153,6 @@
 
 .wiki-sidebar-nav {
   background: #fff;
-  max-height: 400px;
-  overflow-y: auto;
 }
 
 .wiki-sidebar-nav ul {
@@ -203,40 +212,6 @@
 .wiki-sidebar-clear:hover {
   background: #fee;
   border-color: #d73333;
-}
-
-.wiki-sidebar-nav::-webkit-scrollbar {
-  width: 8px;
-}
-
-.wiki-sidebar-nav::-webkit-scrollbar-track {
-  background: #f8f9fa;
-}
-
-.wiki-sidebar-nav::-webkit-scrollbar-thumb {
-  background: #c8ccd1;
-  border-radius: 4px;
-}
-
-.wiki-sidebar-nav::-webkit-scrollbar-thumb:hover {
-  background: #a2a9b1;
-}
-
-#wiki-progress-sidebar::-webkit-scrollbar {
-  width: 8px;
-}
-
-#wiki-progress-sidebar::-webkit-scrollbar-track {
-  background: #f8f9fa;
-}
-
-#wiki-progress-sidebar::-webkit-scrollbar-thumb {
-  background: #c8ccd1;
-  border-radius: 4px;
-}
-
-#wiki-progress-sidebar::-webkit-scrollbar-thumb:hover {
-  background: #a2a9b1;
 }
 
 @media (max-width: 1200px) {
