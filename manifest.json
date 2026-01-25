@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Wikipedia Progress Tracker",
+  "name": "Wiki Stats",
   "version": "1.0.0",
   "description": "Track your personal Wikipedia universe",
   "permissions": ["storage", "activeTab"],

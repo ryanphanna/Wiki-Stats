@@ -17,10 +17,7 @@ Wiki-Stats is designed with privacy and security as core principles:
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability, please report it by:
-
-1. **Opening a GitHub Issue** - For non-sensitive issues, open a public issue
-2. **Private Disclosure** - For sensitive vulnerabilities, please use GitHub's private vulnerability reporting feature
+If you discover a security vulnerability, please report it through the GitHub repository's security tab. We appreciate your help in keeping this project secure.
 
 ### What to Include
 
@@ -31,13 +28,6 @@ If you discover a security vulnerability, please report it by:
 
 ### Response Timeline
 
-- Initial response: Within 48 hours
-- Status update: Within 7 days
-- Resolution: Depends on severity and complexity
-
-## Security Best Practices for Users
-
-- Only install extensions from trusted sources
-- Review extension permissions before installation
-- Keep your browser updated
-- Use the "Clear Data" feature if you want to remove stored data
+- **Initial response**: Within 48 hours
+- **Status update**: Within 7 days
+- **Resolution**: Depends on severity and complexity

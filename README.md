@@ -1,10 +1,10 @@
-# Wikipedia Progress Tracker
+# Wiki Stats
 
 Track your personal Wikipedia universe with an intelligent sidebar that monitors your reading progress, remembers your context, and suggests related articles.
 
 ## About
 
-Wikipedia Progress Tracker is a Chrome extension that enhances your Wikipedia reading experience by automatically tracking the articles you read and providing contextual insights. Whether you're diving deep into research or casually browsing, the extension helps you visualize your reading journey and discover connected topics.
+Wiki Stats is a Chrome extension that enhances your Wikipedia reading experience by automatically tracking the articles you read and providing contextual insights. Whether you're diving deep into research or casually browsing, the extension helps you visualize your reading journey and discover connected topics.
 
 ## Screenshots
 
@@ -65,7 +65,7 @@ Wikipedia Progress Tracker is a Chrome extension that enhances your Wikipedia re
 
 5. Select the folder containing the extension files
 
-6. The Wikipedia Progress Tracker icon should now appear in your extensions toolbar
+6. The Wiki Stats icon should now appear in your extensions toolbar
 
 ## Usage
 
