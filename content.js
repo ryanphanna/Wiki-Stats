@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   if (!isArticlePage()) {
@@ -92,12 +92,12 @@
   function isArticlePage() {
     const path = window.location.pathname;
     return path.includes('/wiki/') &&
-           !path.includes('Special:') &&
-           !path.includes('Talk:') &&
-           !path.includes('Help:') &&
-           !path.includes('Wikipedia:') &&
-           !path.includes('File:') &&
-           !path.includes('Category:');
+      !path.includes('Special:') &&
+      !path.includes('Talk:') &&
+      !path.includes('Help:') &&
+      !path.includes('Wikipedia:') &&
+      !path.includes('File:') &&
+      !path.includes('Category:');
   }
 
   function normalizeUrl(url) {
@@ -310,6 +310,7 @@
       </div>
       ${suggestedHTML}
       <div class="wiki-sidebar-footer">
+        <a href="${chrome.runtime.getURL('dashboard.html')}" target="_blank" class="wiki-sidebar-dashboard" title="Open full dashboard">📊 Dashboard</a>
         <button class="wiki-sidebar-clear" title="Clear all reading data">Clear Data</button>
       </div>
     `;
@@ -325,7 +326,7 @@
     const clearBtn = sidebar.querySelector('.wiki-sidebar-clear');
     clearBtn.addEventListener('click', () => {
       if (confirm('Clear all your Wikipedia reading data? This cannot be undone.')) {
-        chrome.storage.local.clear().then(() => {
+        chrome.storage.local.remove(['articles', 'links', 'dailyStats']).then(() => {
           location.reload();
         });
       }

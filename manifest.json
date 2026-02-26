@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Wiki Stats",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Track your personal Wikipedia universe",
   "permissions": ["storage", "activeTab"],
   "host_permissions": ["*://*.wikipedia.org/*"],
@@ -13,7 +13,8 @@
     "run_at": "document_idle"
   }],
   "action": {
-    "default_icon": {"16": "icon16.png", "48": "icon48.png", "128": "icon128.png"}
+    "default_icon": {"16": "icon16.png", "48": "icon48.png", "128": "icon128.png"},
+    "default_title": "Open Wiki Stats Dashboard"
   },
   "icons": {"16": "icon16.png", "48": "icon48.png", "128": "icon128.png"}
 }

@@ -1,3 +1,7 @@
+chrome.action.onClicked.addListener(() => {
+  chrome.tabs.create({ url: chrome.runtime.getURL('dashboard.html') });
+});
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'saveArticle') {
     saveArticleData(request.data).then(() => {
@@ -18,9 +22,12 @@ async function saveArticleData(data) {
   const { url, title, links, timestamp } = data;
 
   try {
-    const result = await chrome.storage.local.get(['articles', 'links']);
+    const result = await chrome.storage.local.get(['articles', 'links', 'dailyStats']);
     const articles = result.articles || {};
     const allLinks = result.links || {};
+    const dailyStats = result.dailyStats || {};
+
+    const dateKey = new Date(timestamp).toISOString().split('T')[0];
 
     if (articles[url]) {
       articles[url].visitCount = (articles[url].visitCount || 1) + 1;
@@ -36,11 +43,14 @@ async function saveArticleData(data) {
       };
     }
 
+    dailyStats[dateKey] = (dailyStats[dateKey] || 0) + 1;
+
     allLinks[url] = links;
 
     await chrome.storage.local.set({
       articles: articles,
-      links: allLinks
+      links: allLinks,
+      dailyStats: dailyStats
     });
 
     console.log('Saved article:', title, 'with', links.length, 'links');

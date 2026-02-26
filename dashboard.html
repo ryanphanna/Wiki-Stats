@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wiki Stats — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dashboard">
+    <header class="dash-header">
+      <div class="dash-brand">
+        <span class="dash-logo">W</span>
+        <div>
+          <h1 class="dash-title">Wiki Stats</h1>
+          <p class="dash-subtitle">Your personal reading universe</p>
+        </div>
+      </div>
+      <div class="dash-header-actions">
+        <button id="export-btn" class="dash-btn dash-btn-ghost" title="Export data">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v9M4.5 6.5 8 10l3.5-3.5M2 12.5v1A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Export
+        </button>
+        <button id="clear-btn" class="dash-btn dash-btn-danger" title="Clear all data">Clear Data</button>
+      </div>
+    </header>
+
+    <section class="dash-stats" id="stats-cards"></section>
+
+    <section class="dash-section">
+      <h2 class="dash-section-title">Reading Calendar</h2>
+      <p class="dash-section-desc" id="calendar-subtitle"></p>
+      <div class="dash-calendar-wrap">
+        <div class="dash-calendar-labels" id="calendar-day-labels"></div>
+        <div class="dash-calendar-scroll">
+          <div class="dash-calendar-months" id="calendar-month-labels"></div>
+          <div class="dash-calendar-grid" id="calendar-grid"></div>
+        </div>
+      </div>
+      <div class="dash-calendar-legend">
+        <span class="dash-legend-label">Less</span>
+        <span class="dash-legend-cell" data-level="0"></span>
+        <span class="dash-legend-cell" data-level="1"></span>
+        <span class="dash-legend-cell" data-level="2"></span>
+        <span class="dash-legend-cell" data-level="3"></span>
+        <span class="dash-legend-cell" data-level="4"></span>
+        <span class="dash-legend-label">More</span>
+      </div>
+    </section>
+
+    <section class="dash-section">
+      <h2 class="dash-section-title">Last 30 Days</h2>
+      <div class="dash-sparkline-wrap" id="sparkline-container"></div>
+    </section>
+
+    <section class="dash-section">
+      <h2 class="dash-section-title">Reading History</h2>
+      <div class="dash-history-controls">
+        <input type="text" id="history-search" class="dash-search" placeholder="Search articles…">
+      </div>
+      <div class="dash-history" id="history-list"></div>
+    </section>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
