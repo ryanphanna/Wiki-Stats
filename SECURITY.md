@@ -1,23 +1,14 @@
-# Security Policy
+# Security Model
 
-## Supported Versions
+Wiki Stats is built with privacy and security as its foundation.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.0.x   | :white_check_mark: |
-
-## Security Model
-
-Wiki-Stats is designed with privacy and security as core principles:
-
-- **No external communication** - The extension makes zero network requests after installation
-- **Local-only storage** - All data is stored locally in your browser using Chrome's storage API
-- **No personal data collection** - Only stores public Wikipedia article information
-- **Minimal permissions** - Only requests the permissions necessary for core functionality
+- **Local Ownership**: Zero network requests after installation; all data is stored locally via Chrome's storage API.
+- **Privacy-First**: No personal data is collected; only public Wikipedia article information is stored.
+- **Minimal Footprint**: Requests only the permissions necessary for core functionality.
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability, please report it through the GitHub repository's security tab. We appreciate your help in keeping this project secure.
+If you discover a security vulnerability in this project, please report it via the **[GitHub Private Vulnerability Reporting](https://github.com/ryanphanna/Wiki-Stats/security/advisories/new)** tool. Private reports allow for a secure disclosure process before a formal patch is released.
 
 ### What to Include
 
@@ -31,3 +22,4 @@ If you discover a security vulnerability, please report it through the GitHub re
 - **Initial response**: Within 48 hours
 - **Status update**: Within 7 days
 - **Resolution**: Depends on severity and complexity
+
